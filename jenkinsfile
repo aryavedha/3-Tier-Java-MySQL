@@ -1,0 +1,32 @@
+pipeline {
+    agent any
+    
+    tools {
+        maven 'mvn'
+        jdk 'java17'
+    }
+
+    stages {
+        stage('checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/aryavedha/3-Tier-Java-MySQL.git'
+            }
+        }
+
+        stage('test') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+        stage('package') {
+            steps {
+                sh 'mvn package'
+            }
+        }
+        stage('success') {
+            steps {
+                echo 'success'
+            }
+        }
+    }
+}
