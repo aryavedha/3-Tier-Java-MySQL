@@ -7,9 +7,9 @@ pipeline {
     }
 
     stages {
-        stage('checkout') {
+         stage('compile') {
             steps {
-                git branch: 'main', url: 'https://github.com/aryavedha/3-Tier-Java-MySQL.git'
+                sh 'mvn compile'
             }
         }
 
